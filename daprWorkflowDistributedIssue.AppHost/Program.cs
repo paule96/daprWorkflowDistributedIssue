@@ -3,7 +3,7 @@ using Aspire.Hosting.Dapr;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var apiService = builder.AddProject<daprWorkflowDistributedIssue_ApiService>("apiservice")
+var apiService = builder.AddProject<daprWorkflowDistributedIssue_ApiService>("WeatherApi")
     .WithDaprSidecar();
 
 builder.AddProject<daprWorkflowDistributedIssue_DaprWorkflow1>(nameof(daprWorkflowDistributedIssue_DaprWorkflow1))

@@ -1,0 +1,27 @@
+@workflow1Port = 38013
+@workflow2Port = 34567
+# starts an easy workflow
+# @name workflow1Start
+POST http://localhost:{{workflow1Port}}/v1.0-beta1/workflows/dapr/CallWeatherWorkflow/start HTTP/1.1
+
+###
+
+@workflow1Id = {{workflow1Start.response.body.$.instanceID}}
+
+# get the result of this workflow
+# @name result
+GET http://localhost:{{workflow1Port}}/v1.0-beta1/workflows/dapr/{{workflow1Id}} HTTP/1.1
+
+###
+
+# starts an easy workflow
+# @name workflow2Start
+POST http://localhost:{{workflow2Port}}/v1.0-beta1/workflows/dapr/CallWeatherWorkflow/start HTTP/1.1
+
+###
+
+@workflow2Id = {{workflow2Start.response.body.$.instanceID}}
+
+# get the result of this workflow
+# @name result
+GET http://localhost:{{workflow2Port}}/v1.0-beta1/workflows/dapr/{{workflow2Id}} HTTP/1.1
